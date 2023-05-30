@@ -1,14 +1,9 @@
 from api.pagination import PostPagination
 from api.permissions import IsOwnerOrReadOnly
-from api.serializers import (
-    PostSerializer,
-    UserSerializer,
-    CommentSerializer,
-    GroupSerializer,
-    FollowSerializer
-)
+from api.serializers import (CommentSerializer, FollowSerializer,
+                             GroupSerializer, PostSerializer, UserSerializer)
 from django.shortcuts import get_object_or_404
-from posts.models import Post, Group, User, Follow
+from posts.models import Follow, Group, Post, User
 from rest_framework import filters, mixins, permissions, viewsets
 
 
