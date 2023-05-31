@@ -4,8 +4,8 @@ from rest_framework import filters, mixins, permissions, viewsets
 from api.pagination import PostPagination
 from api.permissions import IsOwnerOrReadOnly
 from api.serializers import (CommentSerializer, FollowSerializer,
-                             GroupSerializer, PostSerializer, UserSerializer)
-from posts.models import Follow, Group, Post, User
+                             GroupSerializer, PostSerializer)
+from posts.models import Group, Post
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
@@ -55,11 +55,3 @@ class FollowViewSet(mixins.CreateModelMixin,
 
     def get_queryset(self):
         return self.request.user.follower.all()
-
-    queryset = Follow.objects.all()
-
-
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

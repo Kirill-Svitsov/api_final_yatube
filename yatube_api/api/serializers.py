@@ -11,12 +11,6 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = '__all__'
-        model = User
-
-
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
         slug_field='username',
